@@ -24,5 +24,19 @@ insert into test_table values ('Polygon2', 'Polygon((2 1, 2 -1, 4.5 -1, 4.5 1, 2
 
 insert into test_results values(3, (select ST_Equals(ST_GeomFromText('POINT(2 0)'), ST_AsText(ST_NearCentroid(geom))) from test_table));
 
+delete from test_table;
+
+insert into test_table values ('Polygon1', 'Polygon((-1 -1, -1 1, 1 1, 1 -1, -1 -1))');
+insert into test_table values ('Line1', 'Linestring(4 4, 8 8)');
+
+insert into test_results values(4, (select ST_Equals(ST_GeomFromText('POINT(0 0)'), ST_AsText(ST_NearCentroid(geom))) from test_table));
+
+delete from test_table;
+
+insert into test_table values ('Point1', 'Point(6 2)');
+insert into test_table values ('Point2', 'Point(2 2)');
+
+insert into test_results values(5, (select ST_Equals(ST_GeomFromText('Point(6 2)'), ST_AsText(ST_NearCentroid(geom))) from test_table));
+
 select * from test_results;
 select CONCAT('Run ', (select count(*) from test_results), ' tests, ', (select count(*) from test_results where result), ' where succesful.') as "Results ST_NearCentroid";

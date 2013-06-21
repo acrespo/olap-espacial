@@ -26,3 +26,4 @@ insert into test_table values ('Polygon2', 'Polygon((2 2, 3 2, 3 3, 2 3, 2 2))')
 insert into test_results values (3, (select ST_IsEmpty(ST_Intersects(geom)) from test_table));
 
 select * from test_results;
+select CONCAT('Run ', (select count(*) from test_results), ' tests, ', (select count(*) from test_results where result), ' where succesful.') as "Results_ST_Intersects";

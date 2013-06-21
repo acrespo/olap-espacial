@@ -7,5 +7,8 @@ if [ -z "$db" ]; then
 else
     echo "Executng tests for ST_Intersects...";
     psql -d $db --quiet < test_st_intersects.sql
+
+    echo "Executng tests for ST_NearCentroid...";
+    psql -d $db --quiet < test_st_nearcentroid.sql
 fi
 

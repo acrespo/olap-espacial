@@ -1,4 +1,4 @@
-# Trabajo Practico Especial - OLAP
+# Trabajo Práctico Especial - OLAP
 
 ## Introducción
 
@@ -55,7 +55,7 @@ fue descripto en el enunciado (disponible en el repositorio como
     1.   Estando pgAdminIII conectado a esa base de datos, ejecutar el archivo
          `install.sql` que se encuentra en esta carpeta.
 
-## Ejecucion de pruebas
+## Ejecución de pruebas
 
 ### \*nix
 
@@ -64,7 +64,7 @@ fue descripto en el enunciado (disponible en el repositorio como
 ### Windows
 
 1.  Ejecutar el script `test_st_intersects.sql` desde pgAdminIII para testear la
-    funcion de agregación `ST_Intersects`.
+    función de agregación `ST_Intersects`.
 
 2.  Ejecutar el script `test_st_nearcentroid.sql` desde pgAdminIII para testear la
-    funcion de agregación `ST_NearCentroid`.
+    función de agregación `ST_NearCentroid`.

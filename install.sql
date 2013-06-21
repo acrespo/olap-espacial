@@ -1,3 +1,5 @@
+create extension postgis;
+
 drop aggregate if exists ST_Intersects(geometry);
 
 create aggregate ST_Intersects(geometry) (

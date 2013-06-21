@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\title{Trabajo Práctico Especial - OLAP}
+
+\author{
+{\rm Alvaro Crespo}
+\and
+{\rm Esteban Ordano}
+}
+\date{}
+
+\maketitle
+
+\section{Introducción}
+
+Este repositorio contiene el código y los scripts necesarios para
+instalar y ejecutar dos funciones de agregación: \texttt{ST\_Intersects}
+y \texttt{ST\_NearCentroid}, como fue descripto en el enunciado
+(disponible en el repositorio como \texttt{enunciado.pdf}).
+
+\section{Instalación}
+
+\subsection{Ubuntu 12.04 en adelante}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Instalar el motor de bases de datos postgresql y la extensión PostGIS,
+  que añade funcionalidad para trabajar con datos geoespaciales.
+
+\begin{verbatim}
+sudo apt-get install python-software-properties
+sudo apt-add-repository ppa:ubuntugis/ppa
+sudo apt-get update
+sudo apt-get install postgresql-9.1
+sudo apt-get install postgresql-9.1-postgis
+\end{verbatim}
+
+  A partir de este momento, ejecutar los comandos como usuario con
+  permisos para utilizar la base de datos (en Ubuntu 12.04 este usuario
+  se llama \texttt{postgres} por defecto).
+
+\begin{verbatim}
+sudo su postgres
+\end{verbatim}
+
+\item
+  Crear una base de datos utilizando \texttt{createdb}. Por ejemplo:
+
+\begin{verbatim}
+createdb olap
+\end{verbatim}
+\item
+  Ejecutar \texttt{install.sh} con el nombre de la base de datos como
+  argumento. Ejemplo:
+
+\begin{verbatim}
+./install.sh olap
+\end{verbatim}
+\item
+  (Opcional) Ejecutar los tests para verificar la correcta instalación
+  de las funciones:
+
+\begin{verbatim}
+./run_tests.sh olap
+\end{verbatim}
+\end{enumerate}
+\subsection{Windows 64 bits}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Instalar Postgres y Postgis:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    PostgreSQL:
+    {[}http://get.enterprisedb.com/postgresql/postgresql-9.2.4-1-windows-x64.exe{]}
+  \item
+    Postgis:
+    {[}http://download.osgeo.org/postgis/windows/pg92/postgis-pg92x64-setup-2.0.3-2.exe{]}
+  \end{enumerate}
+\item
+  Crear una base de datos con posibilidad para usar PostGIS:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Ejecutar pgAdminIII
+  \item
+    Utilizar pgAdminIII para crear una nueva base de datos, por ejemplo,
+    \texttt{olap}.
+  \item
+    Estando pgAdminIII conectado a esa base de datos, ejecutar el
+    archivo \texttt{install.sql} que se encuentra en esta carpeta.
+  \end{enumerate}
+\end{enumerate}
+
+\section{Ejecución de pruebas}
+
+\subsection{*nix}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Ejecutar el script de bash \texttt{run\_tests.sh}.
+\end{enumerate}
+
+\subsection{Windows}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Ejecutar el script \texttt{test\_st\_intersects.sql} desde pgAdminIII
+  para testear la función de agregación \texttt{ST\_Intersects}.
+\item
+  Ejecutar el script \texttt{test\_st\_nearcentroid.sql} desde
+  pgAdminIII para testear la función de agregación
+  \texttt{ST\_NearCentroid}.
+\end{enumerate}
+
+\end{document}

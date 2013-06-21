@@ -1,12 +1,12 @@
-drop aggregate ST_Intersects(geometry);
+drop aggregate if exists ST_Intersects(geometry);
 
 create aggregate ST_Intersects(geometry) (
     sfunc = ST_Intersection,
     stype = geometry 
 );
 
-drop aggregate ST_NearCentroid(geometry);
-drop function ST_NearCentroid_final(geom geometry);
+drop aggregate if exists ST_NearCentroid(geometry);
+drop function if exists ST_NearCentroid_final(geom geometry);
 
 create or replace function ST_NearCentroid_final(geom geometry)
 returns geometry as 

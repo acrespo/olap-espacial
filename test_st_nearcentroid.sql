@@ -1,7 +1,7 @@
 SET client_min_messages TO WARNING;
-drop table test_table;
+drop table if exists test_table;
 create table test_table (name varchar, geom geometry);
-drop table test_results;
+drop table if exists test_results;
 create table test_results (test_number int, result boolean);
 
 insert into test_table values ('Polygon1', 'Polygon((0 0, 4 0, 4 1, 0 1, 0 0))');

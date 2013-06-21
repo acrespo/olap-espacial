@@ -11,15 +11,38 @@ fue descripto en el enunciado (disponible en el repositorio como
 
 ### Linux Debian o Ubuntu
 
-1. Instalar el motor de bases de datos postgresql y la extensión PostGIS, que
+1.  Instalar el motor de bases de datos postgresql y la extensión PostGIS, que
    añade funcionalidad para trabajar con datos geoespaciales.
 
-        wget http://anonscm.debian.org/loggerhead/pkg-postgresql/postgresql-common/trunk/download/head:/apt.postgresql.org.s-20130224224205-px3qyst90b3xp8zj-1/apt.postgresql.org.sh
-        chmod +x apt.postgresql.org.sh
-        sudo ./apt.postgresql.org.sh
+        sudo apt-get install python-software-properties
+        sudo apt-add-repository ppa:ubuntugis/ppa
+        sudo apt-get update
+        sudo apt-get install postgresql-9.1
+        sudo apt-get install postgresql-9.1-postgis
 
-        sudo apt-get install postgres
-        sudo apt-get install postgis
+    A partir de este momento, ejecutar los comandos como usuario con permisos
+    para utilizar la base de datos (en Ubuntu 12.04 este usuario se llama
+    `postgres` por defecto).
+
+        sudo su postgres
+
+2.  Crear una base de datos utilizando `createdb`. Ejemplo con `olap` como
+    nombre de base de datos y `postgres` como usuario dueño de la base de datos:
+
+        createdb olap
+
+3.  Ejecutar `install.sh` con el nombre de la base de datos como argumento.
+    Por ejemplo, si el usuario con permisos en la base de datos se llama
+    `postgres` y la base de datos se llama `olap`, dos líneas de código que
+    installan las funciones son:
+
+        ./install.sh olap
+
+4.  Ejecución de los tests para verificar la correcta instalación de las
+    funciones:
+
+        ./run_tests.sh olap
+
 
 ### Windows 64 bits
 
@@ -34,7 +57,7 @@ fue descripto en el enunciado (disponible en el repositorio como
     1.   Ejecutar pgAdminIII
     1.   Utilizar pgAdminIII para crear una nueva base de datos, por ejemplo, `olap`.
     1.   Estando pgAdminIII conectado a esa base de datos, ejecutar el archivo
-         `install.sql` que se encuentra en este repositorio
+         `install.sql` que se encuentra en este repositorio.
 
 ## Ejecucion de pruebas
 

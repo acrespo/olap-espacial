@@ -9,7 +9,7 @@ fue descripto en el enunciado (disponible en el repositorio como
 
 ## Instalación
 
-### Linux Debian o Ubuntu
+### Ubuntu 12.04 en adelante
 
 1.  Instalar el motor de bases de datos postgresql y la extensión PostGIS, que
    añade funcionalidad para trabajar con datos geoespaciales.
@@ -26,19 +26,16 @@ fue descripto en el enunciado (disponible en el repositorio como
 
         sudo su postgres
 
-2.  Crear una base de datos utilizando `createdb`. Ejemplo con `olap` como
-    nombre de base de datos y `postgres` como usuario dueño de la base de datos:
+2.  Crear una base de datos utilizando `createdb`. Por ejemplo:
 
         createdb olap
 
 3.  Ejecutar `install.sh` con el nombre de la base de datos como argumento.
-    Por ejemplo, si el usuario con permisos en la base de datos se llama
-    `postgres` y la base de datos se llama `olap`, dos líneas de código que
-    installan las funciones son:
+    Ejemplo:
 
         ./install.sh olap
 
-4.  Ejecución de los tests para verificar la correcta instalación de las
+4.  (Opcional) Ejecutar los tests para verificar la correcta instalación de las
     funciones:
 
         ./run_tests.sh olap
@@ -49,7 +46,6 @@ fue descripto en el enunciado (disponible en el repositorio como
 1. Instalar Postgres y Postgis:
 
     1.  PostgreSQL: [http://get.enterprisedb.com/postgresql/postgresql-9.2.4-1-windows-x64.exe]
-
     1.  Postgis: [http://download.osgeo.org/postgis/windows/pg92/postgis-pg92x64-setup-2.0.3-2.exe]
 
 2. Crear una base de datos con posibilidad para usar PostGIS:
@@ -57,7 +53,7 @@ fue descripto en el enunciado (disponible en el repositorio como
     1.   Ejecutar pgAdminIII
     1.   Utilizar pgAdminIII para crear una nueva base de datos, por ejemplo, `olap`.
     1.   Estando pgAdminIII conectado a esa base de datos, ejecutar el archivo
-         `install.sql` que se encuentra en este repositorio.
+         `install.sql` que se encuentra en esta carpeta.
 
 ## Ejecucion de pruebas
 
